@@ -1,12 +1,61 @@
-local scripts = {
-    [95630541662383] = "https://raw.githubusercontent.com/Pucho1RD/World-Fighters/refs/heads/main/WF",
-    [987654321] = "https://raw.githubusercontent.com/tuuser/repo/main/juego2.lua"
+
+
+local ROOT = "https://raw.githubusercontent.com/"
+local PARTS = {
+    "Pucho1RD",
+    "World-Fighters"
 }
+local BRANCH = "refs/heads/main/"
+local FILE = "WF"
 
-local scriptUrl = scripts[game.PlaceId]
-
-if scriptUrl then
-    loadstring(game:HttpGet(scriptUrl))()
-else
-    print("Juego no soportado")
+local function join(t)
+    local s = ""
+    for i = 1, #t do
+        s = s .. t[i] .. (i == #t and "" or "/")
+    end
+    return s
 end
+
+
+local function buildURL()
+    local path = join(PARTS)
+    return ROOT .. path .. "/" .. BRANCH .. FILE
+end
+
+
+local function fetch(url)
+    local success, result = pcall(function()
+        return game:HttpGet(url)
+    end)
+
+    if success then
+        return result
+    end
+
+    return nil
+end
+
+
+local function execute(code)
+    if not code then
+        warn("No code received")
+        return
+    end
+
+    local fn = loadstring(code)
+    if fn then
+        fn()
+    else
+        warn("Failed to load script")
+    end
+end
+
+
+local function main()
+    local url = buildURL()
+    local code = fetch(url)
+    execute(code)
+end
+
+
+main()
