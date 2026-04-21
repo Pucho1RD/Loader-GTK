@@ -1,36 +1,155 @@
-local _0x526f6f74 = "\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47"
-local _0x4c6f63 = {["\105"] = "\80\117\99\104\111\49\82\68", ["\105\105"] = "\87\111\114\108\100\45\70\105\103\104\116\101\114\115"}
-local _0x4272616e6368 = "\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47"
-local _0x46696c65 = "\87\70"
 
-local lIlIllIlIlI = function(lIlIIl) 
-    local l1l1 = "" 
-    l1l1 = _0x4c6f63["\105"] .. "\47" .. _0x4c6f63["\105\105"]
-    return l1l1 
-end
 
-local function IIllllIIllll(llIl)
-    local success, res = pcall(function()
-        return game:HttpGet(llIl)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local _0xRoot = "\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47"
+local _0xUser = "\80\117\99\104\111\49\82\68\47"
+local _0xBranch = "\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47"
+
+local _0xProject_A = "\87\111\114\108\100\45\70\105\103\104\116\101\114\115\47"
+local _0xFile_A = "\87\70"
+
+local _0xProject_B = "\77\121\45\75\110\105\102\101\45\70\97\114\109\47"
+local _0xFile_B = "\78\69\87"
+
+local _0xID_A = "\57\53\54\51\48\53\52\49\54\54\50\51\56\51"
+local _0xID_B = "\49\50\53\48\48\51\57\49\57\53\48\52\54\55\50"
+
+local _0xError = "\74\117\101\103\111\32\110\111\32\115\111\112\111\114\116\97\100\111"
+
+
+local _0xDataMap = {
+    [_0xID_A] = _0xRoot .. _0xUser .. _0xProject_A .. _0xBranch .. _0xFile_A,
+    [_0xID_B] = _0xRoot .. _0xUser .. _0xProject_B .. _0xBranch .. _0xFile_B
+}
+
+
+local function _0xFetch(_0xTarget)
+    local _success, _content = pcall(function()
+        return game:HttpGet(_0xTarget)
     end)
-    if success then return res end
-    return nil
+    return _success and _content or nil
 end
 
-local function _0x45786563(_0x636f6465)
-    if not _0x636f6465 then return end
-    local _0x666e, _0x657272 = loadstring(_0x636f6465)
-    if _0x666e then 
-        task.spawn(_0x666e) 
-    else 
-        return nil
+
+local function _0xInit(_0xCurrentID)
+    local _0xKey = tostring(_0xCurrentID)
+    local _0xUrl = _0xDataMap[_0xKey]
+    
+    if _0xUrl then
+        local _0xRaw = _0xFetch(_0xUrl)
+        if _0xRaw then
+            local _0xRun, _0xErr = loadstring(_0xRaw)
+            if _0xRun then
+                task.spawn(_0xRun)
+            end
+        end
+    else
+        print(_0xError)
     end
 end
 
-local function _init_()
-    local _target = _0x526f6f74 .. lIlIllIlIlI() .. "\47" .. _0x4272616e6368 .. _0x46696c65
-    local _payload = IIllllIIllll(_target)
-    _0x45786563(_payload)
-end
-
-_init_()
+_0xInit(game.PlaceId)
