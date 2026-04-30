@@ -2,19 +2,18 @@ local _0xRoot = "\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117
 local _0xUser = "\80\117\99\104\111\49\82\68\47"
 local _0xBranch = "\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47"
 
--- World-Fighters
+
 local _0xProject_A = "\87\111\114\108\100\45\70\105\103\104\116\101\114\115\47"
 local _0xFile_A = "\87\70"
 local _0xID_A = "\57\53\54\51\48\53\52\49\54\54\50\51\56\51"
 
--- My-Knife-Farm
 local _0xProject_B = "\77\121\45\75\110\105\102\101\45\70\97\114\109\47"
 local _0xFile_B = "\78\69\87"
 local _0xID_B = "\49\50\53\48\48\51\57\49\57\53\48\52\54\55\50"
 
--- Anime-Apocalypse
+
 local _0xProject_C = "\65\110\105\109\101\45\65\112\111\99\97\108\121\112\115\101\47"
-local _0xFile_C = "\65\66"
+local _0xFile_C = "\65\65" -- Verifica si tu archivo en GitHub se llama "AA"
 local _0xID_C1 = "119114794144012"
 local _0xID_C2 = "140409475718339"
 
@@ -23,31 +22,22 @@ local _0xError = "\74\117\101\103\111\32\110\111\32\115\111\112\111\114\116\97\1
 local _0xDataMap = {
     [_0xID_A] = _0xRoot .. _0xUser .. _0xProject_A .. _0xBranch .. _0xFile_A,
     [_0xID_B] = _0xRoot .. _0xUser .. _0xProject_B .. _0xBranch .. _0xFile_B,
-    -- Ambos IDs cargan el mismo proyecto de Anime Apocalypse
     [_0xID_C1] = _0xRoot .. _0xUser .. _0xProject_C .. _0xBranch .. _0xFile_C,
     [_0xID_C2] = _0xRoot .. _0xUser .. _0xProject_C .. _0xBranch .. _0xFile_C
 }
-
-local function _0xFetch(_0xTarget)
-    local _success, _content = pcall(function()
-        return game:HttpGet(_0xTarget)
-    end)
-    return _success and _content or nil
-end
 
 local function _0xInit(_0xCurrentID)
     local _0xKey = tostring(_0xCurrentID)
     local _0xUrl = _0xDataMap[_0xKey]
     
     if _0xUrl then
-        local _0xRaw = _0xFetch(_0xUrl)
-        if _0xRaw then
-            local _0xRun, _0xErr = loadstring(_0xRaw)
-            if _0xRun then
-                task.spawn(_0xRun)
-            else
-                warn("Error al ejecutar script cargado.")
-            end
+        -- Usamos directamente loadstring(game:HttpGet())
+        local _success, _err = pcall(function()
+            loadstring(game:HttpGet(_0xUrl))()
+        end)
+        
+        if not _success then
+            warn("Error al cargar el script: " .. tostring(_err))
         end
     else
         print(_0xError)
