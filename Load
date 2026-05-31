@@ -2,7 +2,6 @@ local _0xRoot = "\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117
 local _0xUser = "\80\117\99\104\111\49\82\68\47"
 local _0xBranch = "\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47"
 
-
 local _0xProject_A = "\87\111\114\108\100\45\70\105\103\104\116\101\114\115\47"
 local _0xFile_A = "\87\70"
 local _0xID_A = "\57\53\54\51\48\53\52\49\54\54\50\51\56\51"
@@ -11,11 +10,15 @@ local _0xProject_B = "\77\121\45\75\110\105\102\101\45\70\97\114\109\47"
 local _0xFile_B = "\78\69\87"
 local _0xID_B = "\49\50\53\48\48\51\57\49\57\53\48\52\54\55\50"
 
-
 local _0xProject_C = "\65\110\105\109\101\45\65\112\111\99\97\108\121\112\115\101\47"
-local _0xFile_C = "\65\65" -- Verifica si tu archivo en GitHub se llama "AA"
+local _0xFile_C = "\65\65"
 local _0xID_C1 = "119114794144012"
 local _0xID_C2 = "140409475718339"
+
+-- NUEVO: Anime Astral (Ofuscado en el mismo formato)
+local _0xProject_D = "\65\110\105\109\101\45\65\115\116\114\117\108\47" -- "Anime-Astral/"
+local _0xFile_D = "\65\65\115\116\114\101\108" -- "AAstral"
+local _0xID_D1 = "17240366601" -- ID del juego (puedes duplicar o añadir más IDs abajo si tiene universos)
 
 local _0xError = "\74\117\101\103\111\32\110\111\32\115\111\112\111\114\116\97\100\111"
 
@@ -23,7 +26,10 @@ local _0xDataMap = {
     [_0xID_A] = _0xRoot .. _0xUser .. _0xProject_A .. _0xBranch .. _0xFile_A,
     [_0xID_B] = _0xRoot .. _0xUser .. _0xProject_B .. _0xBranch .. _0xFile_B,
     [_0xID_C1] = _0xRoot .. _0xUser .. _0xProject_C .. _0xBranch .. _0xFile_C,
-    [_0xID_C2] = _0xRoot .. _0xUser .. _0xProject_C .. _0xBranch .. _0xFile_C
+    [_0xID_C2] = _0xRoot .. _0xUser .. _0xProject_C .. _0xBranch .. _0xFile_C,
+    
+    -- Mapeo del nuevo Raw
+    [_0xID_D1] = _0xRoot .. _0xUser .. _0xProject_D .. _0xBranch .. _0xFile_D
 }
 
 local function _0xInit(_0xCurrentID)
@@ -31,7 +37,6 @@ local function _0xInit(_0xCurrentID)
     local _0xUrl = _0xDataMap[_0xKey]
     
     if _0xUrl then
-        -- Usamos directamente loadstring(game:HttpGet())
         local _success, _err = pcall(function()
             loadstring(game:HttpGet(_0xUrl))()
         end)
