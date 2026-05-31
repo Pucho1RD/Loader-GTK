@@ -33,23 +33,11 @@ local _0xDataMap = {
     [_0xID_D_Place] = _0xRoot .. _0xUser .. _0xProject_D .. _0xBranch .. _0xFile_D
 }
 
-local function _0xInit()
-    local _keyPlace = tostring(game.PlaceId)
-    local _keyGame = tostring(game.GameId)
-    
-    local _0xUrl = _0xDataMap[_keyPlace] or _0xDataMap[_keyGame]
-    
-    if _0xUrl then
-        local _success, _err = pcall(function()
-            loadstring(game:HttpGet(_0xUrl))()
-        end)
-        
-        if not _success then
-            warn("Error al cargar el script: " .. tostring(_err))
-        end
-    else
-        print(_0xError)
-    end
-end
+-- Ejecución directa en el entorno global (sin pcall ni funciones secundarias)
+local _0xUrl = _0xDataMap[tostring(game.PlaceId)] or _0xDataMap[tostring(game.GameId)]
 
-_0xInit()
+if _0xUrl then
+    loadstring(game:HttpGet(_0xUrl))()
+else
+    print(_0xError)
+end
