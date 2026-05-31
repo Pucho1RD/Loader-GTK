@@ -15,11 +15,11 @@ local _0xFile_C = "\65\65"
 local _0xID_C1 = "119114794144012"
 local _0xID_C2 = "140409475718339"
 
--- ANIME ASTRAL (Ofuscado en tu formato original)
-local _0xProject_D = "\65\110\105\109\101\45\65\115\116\114\117\108\47"   -- "Anime-Astral/"
-local _0xFile_D = "\65\65\115\116\114\101\108"                          -- "AAstral"
-local _0xID_D_Univ = "113236157544232"                                  -- ID de la experiencia que me pasaste
-local _0xID_D_Place = "17240366601"                                     -- ID de mapa base antiguo por si acaso
+-- ANIME ASTRAL
+local _0xProject_D = "\65\110\105\109\101\45\65\115\116\114\117\108\47" 
+local _0xFile_D = "\65\65\115\116\114\101\108" 
+local _0xID_D_Univ = "113236157544232" 
+local _0xID_D_Place = "17240366601" 
 
 local _0xError = "\74\117\101\103\111\32\110\111\32\115\111\112\111\114\116\97\100\111"
 
@@ -29,13 +29,11 @@ local _0xDataMap = {
     [_0xID_C1] = _0xRoot .. _0xUser .. _0xProject_C .. _0xBranch .. _0xFile_C,
     [_0xID_C2] = _0xRoot .. _0xUser .. _0xProject_C .. _0xBranch .. _0xFile_C,
     
-    -- Mapeo seguro para Anime Astral (Entra con cualquiera de los dos IDs)
     [_0xID_D_Univ] = _0xRoot .. _0xUser .. _0xProject_D .. _0xBranch .. _0xFile_D,
     [_0xID_D_Place] = _0xRoot .. _0xUser .. _0xProject_D .. _0xBranch .. _0xFile_D
 }
 
 local function _0xInit()
-    -- Revisamos tanto el PlaceId (Mundo actual) como el GameId (Universo general)
     local _keyPlace = tostring(game.PlaceId)
     local _keyGame = tostring(game.GameId)
     
